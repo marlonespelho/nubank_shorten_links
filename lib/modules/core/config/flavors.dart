@@ -6,7 +6,7 @@ enum FlavorsEnum {
   fgtsAntecipationDev,
   fgtsAntecipationProd,
   formalizationDev,
-  formalizationProd
+  formalizationProd,
 }
 
 class F {
@@ -37,10 +37,6 @@ class F {
   }
 
   static bool get isBanking {
-    return {
-          FlavorsEnum.bankingDev: true,
-          FlavorsEnum.bankingProd: true,
-        }[appFlavor] ??
-        false;
+    return {FlavorsEnum.bankingDev: true, FlavorsEnum.bankingProd: true}[appFlavor] ?? false;
   }
 }

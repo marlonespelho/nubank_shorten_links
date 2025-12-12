@@ -14,10 +14,7 @@ class DioInterceptor extends InterceptorsWrapper {
   }
 
   @override
-  void onResponse(
-    Response<dynamic> response,
-    ResponseInterceptorHandler handler,
-  ) {
+  void onResponse(Response<dynamic> response, ResponseInterceptorHandler handler) {
     var responseData = jsonEncode(response.data);
     super.onResponse(response, handler);
   }
@@ -27,39 +24,17 @@ class DioInterceptor extends InterceptorsWrapper {
     var requestData = jsonEncode(err.requestOptions.data);
     Exception? exception;
     int? statusCode = err.response?.statusCode;
-    var errorMessage =
-        err.response?.data?["error"] ?? err.response?.data?['errors'];
+    var errorMessage = err.response?.data?["error"] ?? err.response?.data?['errors'];
     if (statusCode != null) {
       exception = {
-        400: BadRequestException(
-          statusCode: err.response?.statusCode,
-          serverError: errorMessage,
-        ),
-        401: UnauthorizedException(
-          statusCode: err.response?.statusCode,
-          serverError: errorMessage,
-        ),
-        404: NotFoundException(
-          statusCode: err.response?.statusCode,
-          serverError: errorMessage,
-        ),
-        422: UnprocessableEntityException(
-          statusCode: err.response?.statusCode,
-          serverError: errorMessage,
-        ),
+        400: BadRequestException(statusCode: err.response?.statusCode, serverError: errorMessage),
+        401: UnauthorizedException(statusCode: err.response?.statusCode, serverError: errorMessage),
+        404: NotFoundException(statusCode: err.response?.statusCode, serverError: errorMessage),
+        422: UnprocessableEntityException(statusCode: err.response?.statusCode, serverError: errorMessage),
         500: (err.message != null && err.message!.toString().contains("401"))
-            ? UnauthorizedException(
-                statusCode: err.response?.statusCode,
-                serverError: errorMessage,
-              )
-            : InternalServerError(
-                statusCode: err.response?.statusCode,
-                serverError: errorMessage,
-              ),
-        522: TimeOutException(
-          statusCode: err.response?.statusCode,
-          serverError: errorMessage,
-        ),
+            ? UnauthorizedException(statusCode: err.response?.statusCode, serverError: errorMessage)
+            : InternalServerError(statusCode: err.response?.statusCode, serverError: errorMessage),
+        522: TimeOutException(statusCode: err.response?.statusCode, serverError: errorMessage),
       }[statusCode];
     }
 
@@ -76,14 +51,8 @@ class DioInterceptor extends InterceptorsWrapper {
         statusCode: err.response?.statusCode,
         serverError: errorMessage,
       ),
-      DioExceptionType.sendTimeout: TimeOutException(
-        statusCode: err.response?.statusCode,
-        serverError: errorMessage,
-      ),
-      DioExceptionType.unknown: UnexpectedException(
-        statusCode: err.response?.statusCode,
-        serverError: errorMessage,
-      ),
+      DioExceptionType.sendTimeout: TimeOutException(statusCode: err.response?.statusCode, serverError: errorMessage),
+      DioExceptionType.unknown: UnexpectedException(statusCode: err.response?.statusCode, serverError: errorMessage),
     }[err.type];
 
     if (err.error is SocketException) {

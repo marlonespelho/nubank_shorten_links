@@ -28,9 +28,7 @@ class S {
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -66,12 +64,7 @@ class S {
 
   /// `Unauthorized`
   String get unauthorizedExceptionMessage {
-    return Intl.message(
-      'Unauthorized',
-      name: 'unauthorizedExceptionMessage',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Unauthorized', name: 'unauthorizedExceptionMessage', desc: '', args: []);
   }
 
   /// `Your session has expired, please log in again to continue using the application.`
@@ -86,32 +79,17 @@ class S {
 
   /// `Not found.`
   String get notFoundExceptionMessage {
-    return Intl.message(
-      'Not found.',
-      name: 'notFoundExceptionMessage',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Not found.', name: 'notFoundExceptionMessage', desc: '', args: []);
   }
 
   /// `No connection.`
   String get noConnectionExceptionMessage {
-    return Intl.message(
-      'No connection.',
-      name: 'noConnectionExceptionMessage',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('No connection.', name: 'noConnectionExceptionMessage', desc: '', args: []);
   }
 
   /// `Request timeout.`
   String get timeOutExceptionMessage {
-    return Intl.message(
-      'Request timeout.',
-      name: 'timeOutExceptionMessage',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Request timeout.', name: 'timeOutExceptionMessage', desc: '', args: []);
   }
 
   /// `Service unavailable at the moment, please try again later.`

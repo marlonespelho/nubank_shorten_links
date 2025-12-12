@@ -6,13 +6,14 @@ import 'package:nubank_shorten_links/generated/l10n.dart';
 import 'package:nubank_shorten_links/modules/core/config/environment.dart';
 import 'package:nubank_shorten_links/modules/core/services/navigation.dart';
 import 'package:nubank_shorten_links/modules/design/theme/theme.dart';
+import 'package:nubank_shorten_links/modules/link_shortener/link_shortener_module.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Modular.setInitialRoute('/');
+    Modular.setInitialRoute(LinkShortenerModule.shortenLinksView);
     Modular.setNavigatorKey(NavigationService().navigatorKey);
     return MaterialApp.router(
       routeInformationParser: Modular.routeInformationParser,

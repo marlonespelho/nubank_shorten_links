@@ -14,13 +14,7 @@ abstract class HttpService {
 
   Future post({required String path, data, queryParams, Function? onError});
 
-  Future put({
-    required String path,
-    data,
-    queryParams,
-    Function? onError,
-    Map<String, dynamic>? headers,
-  });
+  Future put({required String path, data, queryParams, Function? onError, Map<String, dynamic>? headers});
 
   Future delete({required String path, data, queryParams, Function? onError});
 
@@ -29,10 +23,9 @@ abstract class HttpService {
 
 abstract class HttpError extends HttpException {
   late int? statusCode;
-  late final _serverError;
+  late final dynamic _serverError;
 
-  HttpError({this.statusCode, serverError, message})
-    : super(message ?? S.current.defaultExceptionMessage) {
+  HttpError({this.statusCode, serverError, message}) : super(message ?? S.current.defaultExceptionMessage) {
     _serverError = serverError;
   }
 
@@ -45,8 +38,7 @@ abstract class HttpError extends HttpException {
 }
 
 class BadRequestException extends HttpError {
-  BadRequestException({int? statusCode = 400, String? message, serverError})
-    : super(statusCode: statusCode, serverError: serverError) {
+  BadRequestException({super.statusCode = 400, String? message, super.serverError}) {
     message = message ?? S.current.badRequestExceptionMessage;
   }
 
@@ -57,8 +49,7 @@ class BadRequestException extends HttpError {
 }
 
 class NotFoundException extends HttpError {
-  NotFoundException({int? statusCode = 404, String? message, serverError})
-    : super(statusCode: statusCode, serverError: serverError) {
+  NotFoundException({super.statusCode = 404, String? message, super.serverError}) {
     message = message ?? S.current.notFoundExceptionMessage;
   }
 
@@ -69,8 +60,7 @@ class NotFoundException extends HttpError {
 }
 
 class NoConnectionException extends HttpError {
-  NoConnectionException({int? statusCode = 500, String? message, serverError})
-    : super(statusCode: statusCode, serverError: serverError) {
+  NoConnectionException({super.statusCode = 500, String? message, super.serverError}) {
     message = message ?? S.current.noConnectionExceptionMessage;
   }
 
@@ -81,8 +71,7 @@ class NoConnectionException extends HttpError {
 }
 
 class TimeOutException extends HttpError {
-  TimeOutException({int? statusCode = 500, String? message, serverError})
-    : super(statusCode: statusCode, serverError: serverError) {
+  TimeOutException({super.statusCode = 500, String? message, super.serverError}) {
     message = message ?? S.current.timeOutExceptionMessage;
   }
 
@@ -93,8 +82,7 @@ class TimeOutException extends HttpError {
 }
 
 class UnauthorizedException extends HttpError {
-  UnauthorizedException({int? statusCode = 401, String? message, serverError})
-    : super(statusCode: statusCode, serverError: serverError) {
+  UnauthorizedException({super.statusCode = 401, String? message, super.serverError}) {
     message = message ?? S.current.unauthorizedExceptionMessage;
   }
 
@@ -105,11 +93,7 @@ class UnauthorizedException extends HttpError {
 }
 
 class UnprocessableEntityException extends HttpError {
-  UnprocessableEntityException({
-    int? statusCode = 422,
-    String? message,
-    serverError,
-  }) : super(statusCode: statusCode, serverError: serverError) {
+  UnprocessableEntityException({super.statusCode = 422, String? message, super.serverError}) {
     message = message ?? S.current.badRequestExceptionMessage;
   }
 
@@ -120,8 +104,7 @@ class UnprocessableEntityException extends HttpError {
 }
 
 class InternalServerError extends HttpError {
-  InternalServerError({int? statusCode = 500, String? message, serverError})
-    : super(statusCode: statusCode, serverError: serverError) {
+  InternalServerError({super.statusCode = 500, String? message, super.serverError}) {
     message = message ?? S.current.defaultExceptionMessage;
   }
 
@@ -132,8 +115,7 @@ class InternalServerError extends HttpError {
 }
 
 class UnexpectedException extends HttpError {
-  UnexpectedException({int? statusCode = 500, String? message, serverError})
-    : super(statusCode: statusCode, serverError: serverError) {
+  UnexpectedException({super.statusCode = 500, String? message, super.serverError}) {
     message = message ?? S.current.defaultExceptionMessage;
   }
 
@@ -144,8 +126,7 @@ class UnexpectedException extends HttpError {
 }
 
 class HttpExceptionError extends HttpError {
-  HttpExceptionError({int? statusCode = 500, String? message, serverError})
-    : super(statusCode: statusCode, serverError: serverError) {
+  HttpExceptionError({super.statusCode = 500, String? message, super.serverError}) {
     message = message ?? S.current.defaultExceptionMessage;
   }
 }

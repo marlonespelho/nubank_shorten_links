@@ -9,11 +9,7 @@ import 'package:nubank_shorten_links/modules/design/widgets/error_widget.dart';
 class DioHttpService implements HttpService {
   late Dio _client;
 
-  DioHttpService({
-    required this.baseUrl,
-    this.timeout = 10,
-    InterceptorsWrapper? interceptor,
-  }) {
+  DioHttpService({required this.baseUrl, this.timeout = 10, InterceptorsWrapper? interceptor}) {
     _client = Dio();
     _client.interceptors.add(interceptor ?? DioInterceptor());
     _client.options.baseUrl = baseUrl;
@@ -25,9 +21,8 @@ class DioHttpService implements HttpService {
     }
 
     (_client.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
-      HttpClient client = new HttpClient();
-      client.badCertificateCallback =
-          ((X509Certificate cert, String host, int port) => true);
+      HttpClient client = HttpClient();
+      client.badCertificateCallback = ((X509Certificate cert, String host, int port) => true);
       return client;
     };
   }
@@ -39,18 +34,9 @@ class DioHttpService implements HttpService {
   int timeout;
 
   @override
-  Future delete({
-    required String path,
-    data,
-    queryParams,
-    Function? onError,
-  }) async {
+  Future delete({required String path, data, queryParams, Function? onError}) async {
     try {
-      var response = await _client.delete(
-        path,
-        data: data,
-        queryParameters: queryParams,
-      );
+      var response = await _client.delete(path, data: data, queryParameters: queryParams);
       return response.data;
     } catch (e, stack) {
       handleException(e, onError, stack);
@@ -59,18 +45,9 @@ class DioHttpService implements HttpService {
   }
 
   @override
-  Future get({
-    required String path,
-    data,
-    queryParams,
-    Function? onError,
-  }) async {
+  Future get({required String path, data, queryParams, Function? onError}) async {
     try {
-      var response = await _client.get(
-        path,
-        data: data,
-        queryParameters: queryParams,
-      );
+      var response = await _client.get(path, data: data, queryParameters: queryParams);
       return response.data;
     } catch (e, stack) {
       handleException(e, onError, stack);
@@ -79,18 +56,9 @@ class DioHttpService implements HttpService {
   }
 
   @override
-  Future post({
-    required String path,
-    data,
-    queryParams,
-    Function? onError,
-  }) async {
+  Future post({required String path, data, queryParams, Function? onError}) async {
     try {
-      var response = await _client.post(
-        path,
-        data: data,
-        queryParameters: queryParams,
-      );
+      var response = await _client.post(path, data: data, queryParameters: queryParams);
       return response.data;
     } catch (e, stack) {
       handleException(e, onError, stack);
@@ -99,13 +67,7 @@ class DioHttpService implements HttpService {
   }
 
   @override
-  Future put({
-    required String path,
-    data,
-    queryParams,
-    Function? onError,
-    Map<String, dynamic>? headers,
-  }) async {
+  Future put({required String path, data, queryParams, Function? onError, Map<String, dynamic>? headers}) async {
     try {
       var response = await _client.put(
         path,
@@ -121,18 +83,9 @@ class DioHttpService implements HttpService {
   }
 
   @override
-  Future patch({
-    required String path,
-    data,
-    queryParams,
-    Function? onError,
-  }) async {
+  Future patch({required String path, data, queryParams, Function? onError}) async {
     try {
-      var response = await _client.patch(
-        path,
-        data: data,
-        queryParameters: queryParams,
-      );
+      var response = await _client.patch(path, data: data, queryParameters: queryParams);
       return response.data;
     } catch (e, stack) {
       handleException(e, onError, stack);

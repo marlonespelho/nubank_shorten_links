@@ -6,12 +6,7 @@ class RowTextLabel extends StatelessWidget {
 
   final CrossAxisAlignment? crossAxisAlignment;
 
-  const RowTextLabel({
-    super.key,
-    required this.label,
-    required this.value,
-    this.crossAxisAlignment,
-  });
+  const RowTextLabel({super.key, required this.label, required this.value, this.crossAxisAlignment});
 
   @override
   Widget build(BuildContext context) {
@@ -24,23 +19,10 @@ class RowTextLabel extends StatelessWidget {
           flex: 4,
           child: Align(
             alignment: Alignment.centerLeft,
-            child: Text(
-              label,
-              style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontSize: 14,
-                  ),
-            ),
+            child: Text(label, style: Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 14)),
           ),
         ),
-        Flexible(
-          flex: 6,
-          child: value is String
-              ? Text(
-                  value,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                )
-              : value,
-        ),
+        Flexible(flex: 6, child: value is String ? Text(value, style: Theme.of(context).textTheme.bodyMedium) : value),
       ],
     );
   }

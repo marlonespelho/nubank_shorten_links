@@ -4,11 +4,7 @@ class LoadingDialog extends StatelessWidget {
   const LoadingDialog({super.key});
 
   static showLoading(BuildContext context) {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => const LoadingDialog(),
-    );
+    showDialog(context: context, barrierDismissible: false, builder: (context) => const LoadingDialog());
   }
 
   static hideLoading(BuildContext context) {
@@ -17,8 +13,6 @@ class LoadingDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: CircularProgressIndicator(),
-    );
+    return const Center(child: CircularProgressIndicator());
   }
 }

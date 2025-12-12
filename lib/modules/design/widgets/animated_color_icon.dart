@@ -26,17 +26,12 @@ class _AnimatedColorIconState extends State<AnimatedColorIcon> with SingleTicker
   void initState() {
     super.initState();
 
-    controller = AnimationController(
-      duration: const Duration(milliseconds: 300),
-      vsync: this,
-    )..addListener(() {
+    controller = AnimationController(duration: const Duration(milliseconds: 300), vsync: this)
+      ..addListener(() {
         setState(() {});
       });
 
-    animation = ColorTween(
-      begin: Colors.grey[400],
-      end: widget.selectedColor,
-    ).animate(controller);
+    animation = ColorTween(begin: Colors.grey[400], end: widget.selectedColor).animate(controller);
 
     Future.microtask(() {
       if (widget.selected) {
@@ -64,10 +59,7 @@ class _AnimatedColorIconState extends State<AnimatedColorIcon> with SingleTicker
         }
         controller.forward();
       },
-      icon: Icon(
-        widget.icon,
-        color: animation.value,
-      ),
+      icon: Icon(widget.icon, color: animation.value),
     );
   }
 }

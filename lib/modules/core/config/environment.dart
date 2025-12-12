@@ -14,14 +14,11 @@ class Environment {
 
   BaseConfig config = DevelopmentConfig();
 
-  bool get isProduction =>
-      String.fromEnvironment('ENVIRONMENT', defaultValue: 'DEVELOPMENT') ==
-      production;
+  bool get isProduction => String.fromEnvironment('ENVIRONMENT', defaultValue: 'DEVELOPMENT') == production;
 
   initConfig() {
     config = _getConfig(isProduction);
   }
 
-  BaseConfig _getConfig(bool prod) =>
-      prod ? ProductionConfig() : DevelopmentConfig();
+  BaseConfig _getConfig(bool prod) => prod ? ProductionConfig() : DevelopmentConfig();
 }

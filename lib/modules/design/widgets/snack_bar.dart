@@ -3,7 +3,7 @@ import 'package:nubank_shorten_links/modules/design/theme/palette.dart';
 
 import '../../core/services/navigation.dart';
 
-showSnackBarMessage({ required String message, required SnackBarTypeEnum type}) {
+showSnackBarMessage({required String message, required SnackBarTypeEnum type}) {
   var context = NavigationService().getCurrentContext();
 
   ScaffoldMessenger.of(context).showSnackBar(

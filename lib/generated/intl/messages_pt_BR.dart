@@ -28,20 +28,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "defaultExceptionMessage": MessageLookupByLibrary.simpleMessage(
       "Serviço indisponível no momento, tente novamente mais tarde.",
     ),
-    "noConnectionExceptionMessage": MessageLookupByLibrary.simpleMessage(
-      "Sem conexão.",
-    ),
-    "notFoundExceptionMessage": MessageLookupByLibrary.simpleMessage(
-      "Não encontrado.",
-    ),
-    "timeOutExceptionMessage": MessageLookupByLibrary.simpleMessage(
-      "Tempo de requisição expirado.",
-    ),
+    "noConnectionExceptionMessage": MessageLookupByLibrary.simpleMessage("Sem conexão."),
+    "notFoundExceptionMessage": MessageLookupByLibrary.simpleMessage("Não encontrado."),
+    "timeOutExceptionMessage": MessageLookupByLibrary.simpleMessage("Tempo de requisição expirado."),
     "unauthorizedAlertMessage": MessageLookupByLibrary.simpleMessage(
       "Sua sessão expirou, faça login novamente para continuar utilizando o aplicativo.",
     ),
-    "unauthorizedExceptionMessage": MessageLookupByLibrary.simpleMessage(
-      "Não autorizado",
-    ),
+    "unauthorizedExceptionMessage": MessageLookupByLibrary.simpleMessage("Não autorizado"),
   };
 }
