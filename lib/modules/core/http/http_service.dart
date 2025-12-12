@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:nubank_shorten_links/generated/l10n.dart';
+import '../../../generated/l10n.dart';
 
 abstract class HttpService {
   HttpService(this.baseUrl, this.timeout);
@@ -8,125 +8,145 @@ abstract class HttpService {
   String baseUrl;
   int timeout;
 
-  updateHeaders({headers});
+  void updateHeaders({Map<String, dynamic>? headers});
 
-  Future get({required String path, data, queryParams, Function? onError});
+  Future<dynamic> get<T>({
+    required String path,
+    dynamic data,
+    Map<String, dynamic>? queryParams,
+    void Function(Object)? onError,
+  });
 
-  Future post({required String path, data, queryParams, Function? onError});
+  Future<dynamic> post<T>({
+    required String path,
+    dynamic data,
+    Map<String, dynamic>? queryParams,
+    void Function(Object)? onError,
+  });
 
-  Future put({required String path, data, queryParams, Function? onError, Map<String, dynamic>? headers});
+  Future<dynamic> put<T>({
+    required String path,
+    dynamic data,
+    Map<String, dynamic>? queryParams,
+    void Function(Object)? onError,
+    Map<String, dynamic>? headers,
+  });
 
-  Future delete({required String path, data, queryParams, Function? onError});
+  Future<dynamic> delete<T>({
+    required String path,
+    dynamic data,
+    Map<String, dynamic>? queryParams,
+    void Function(Object)? onError,
+  });
 
-  Future patch({required String path, data, queryParams, Function? onError});
+  Future<dynamic> patch<T>({
+    required String path,
+    dynamic data,
+    Map<String, dynamic>? queryParams,
+    void Function(Object)? onError,
+  });
 }
 
 abstract class HttpError extends HttpException {
+  HttpError({this.statusCode, dynamic serverError, String? message})
+    : super(message ?? S.current.defaultExceptionMessage) {
+    _serverError = serverError;
+  }
   late int? statusCode;
   late final dynamic _serverError;
 
-  HttpError({this.statusCode, serverError, message}) : super(message ?? S.current.defaultExceptionMessage) {
-    _serverError = serverError;
-  }
-
   @override
   String toString() {
-    return _serverError ?? message;
+    if (_serverError != null) {
+      return _serverError.toString();
+    }
+    return message;
   }
 
-  get serverError => _serverError;
+  dynamic get serverError => _serverError;
 }
 
 class BadRequestException extends HttpError {
-  BadRequestException({super.statusCode = 400, String? message, super.serverError}) {
-    message = message ?? S.current.badRequestExceptionMessage;
-  }
+  BadRequestException({super.statusCode = 400, String? message, super.serverError})
+    : super(message: message ?? S.current.badRequestExceptionMessage);
 
   @override
-  toString() {
+  String toString() {
     return message;
   }
 }
 
 class NotFoundException extends HttpError {
-  NotFoundException({super.statusCode = 404, String? message, super.serverError}) {
-    message = message ?? S.current.notFoundExceptionMessage;
-  }
+  NotFoundException({super.statusCode = 404, String? message, super.serverError})
+    : super(message: message ?? S.current.notFoundExceptionMessage);
 
   @override
-  toString() {
+  String toString() {
     return message;
   }
 }
 
 class NoConnectionException extends HttpError {
-  NoConnectionException({super.statusCode = 500, String? message, super.serverError}) {
-    message = message ?? S.current.noConnectionExceptionMessage;
-  }
+  NoConnectionException({super.statusCode = 500, String? message, super.serverError})
+    : super(message: message ?? S.current.noConnectionExceptionMessage);
 
   @override
-  toString() {
+  String toString() {
     return message;
   }
 }
 
 class TimeOutException extends HttpError {
-  TimeOutException({super.statusCode = 500, String? message, super.serverError}) {
-    message = message ?? S.current.timeOutExceptionMessage;
-  }
+  TimeOutException({super.statusCode = 500, String? message, super.serverError})
+    : super(message: message ?? S.current.timeOutExceptionMessage);
 
   @override
-  toString() {
+  String toString() {
     return message;
   }
 }
 
 class UnauthorizedException extends HttpError {
-  UnauthorizedException({super.statusCode = 401, String? message, super.serverError}) {
-    message = message ?? S.current.unauthorizedExceptionMessage;
-  }
+  UnauthorizedException({super.statusCode = 401, String? message, super.serverError})
+    : super(message: message ?? S.current.unauthorizedExceptionMessage);
 
   @override
-  toString() {
+  String toString() {
     return message;
   }
 }
 
 class UnprocessableEntityException extends HttpError {
-  UnprocessableEntityException({super.statusCode = 422, String? message, super.serverError}) {
-    message = message ?? S.current.badRequestExceptionMessage;
-  }
+  UnprocessableEntityException({super.statusCode = 422, String? message, super.serverError})
+    : super(message: message ?? S.current.badRequestExceptionMessage);
 
   @override
-  toString() {
+  String toString() {
     return message;
   }
 }
 
 class InternalServerError extends HttpError {
-  InternalServerError({super.statusCode = 500, String? message, super.serverError}) {
-    message = message ?? S.current.defaultExceptionMessage;
-  }
+  InternalServerError({super.statusCode = 500, String? message, super.serverError})
+    : super(message: message ?? S.current.defaultExceptionMessage);
 
   @override
-  toString() {
+  String toString() {
     return message;
   }
 }
 
 class UnexpectedException extends HttpError {
-  UnexpectedException({super.statusCode = 500, String? message, super.serverError}) {
-    message = message ?? S.current.defaultExceptionMessage;
-  }
+  UnexpectedException({super.statusCode = 500, String? message, super.serverError})
+    : super(message: message ?? S.current.defaultExceptionMessage);
 
   @override
-  toString() {
+  String toString() {
     return message;
   }
 }
 
 class HttpExceptionError extends HttpError {
-  HttpExceptionError({super.statusCode = 500, String? message, super.serverError}) {
-    message = message ?? S.current.defaultExceptionMessage;
-  }
+  HttpExceptionError({super.statusCode = 500, String? message, super.serverError})
+    : super(message: message ?? S.current.defaultExceptionMessage);
 }

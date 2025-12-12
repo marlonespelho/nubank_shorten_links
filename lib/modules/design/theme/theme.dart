@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nubank_shorten_links/modules/design/theme/palette.dart';
+import 'palette.dart';
 
 class DefaultTheme {
   static void init() {
@@ -24,7 +24,7 @@ class DefaultTheme {
     iconButtonTheme: const IconButtonThemeData(
       style: ButtonStyle(iconColor: WidgetStatePropertyAll(Palette.onPrimaryColor)),
     ),
-    dialogTheme: DialogThemeData(backgroundColor: Palette.primary),
+    dialogTheme: const DialogThemeData(backgroundColor: Palette.primary),
     floatingActionButtonTheme: DefaultTheme.floatingActionButtonTheme(),
     textTheme: DefaultTheme.textTheme(),
     outlinedButtonTheme: DefaultTheme.outlinedButtonTheme(),
@@ -36,7 +36,7 @@ class DefaultTheme {
         color: Palette.primaryTextColor,
         fontSize: 16,
         fontWeight: FontWeight.bold,
-        fontFamily: GoogleFonts.urbanist().fontFamily,
+        fontFamily: GoogleFonts.inter().fontFamily,
       ),
     ),
     textButtonTheme: DefaultTheme.textButtonTheme(),
@@ -45,17 +45,17 @@ class DefaultTheme {
     appBarTheme: appBarDecoration(),
     progressIndicatorTheme: progressIndicatorTheme(),
     cardColor: Palette.secondary,
-    cardTheme: CardThemeData(color: Colors.white, elevation: 2),
+    cardTheme: const CardThemeData(color: Colors.white, elevation: 2),
     dividerColor: Palette.dividerColor,
     canvasColor: Colors.white,
   );
 
-  static appBarDecoration() {
+  static AppBarTheme appBarDecoration() {
     return AppBarTheme(
       backgroundColor: Palette.primary,
-      iconTheme: IconThemeData(color: Palette.secondary),
+      iconTheme: const IconThemeData(color: Palette.secondary),
       titleTextStyle: TextStyle(
-        fontFamily: GoogleFonts.urbanist().fontFamily,
+        fontFamily: GoogleFonts.inter().fontFamily,
         color: Palette.onPrimaryColor,
         fontSize: 20,
         fontWeight: FontWeight.bold,
@@ -65,17 +65,17 @@ class DefaultTheme {
     );
   }
 
-  static inputDecoration() {
+  static InputDecorationTheme inputDecoration() {
     return InputDecorationTheme(
       fillColor: Palette.inputBackground,
       focusColor: Palette.secondary,
       hoverColor: Palette.secondary,
       filled: false,
-      labelStyle: inputDecorationTextTheme(color: Palette.primaryTextColor, bold: false, size: 14),
+      labelStyle: inputDecorationTextTheme(color: Palette.primaryTextColor),
       errorMaxLines: 2,
       suffixIconColor: Palette.primaryTextColor,
       prefixIconColor: Palette.primaryTextColor,
-      hintStyle: inputDecorationTextTheme(size: 14, color: Palette.primaryTextColor),
+      hintStyle: inputDecorationTextTheme(color: Palette.primaryTextColor),
       errorStyle: inputDecorationTextTheme(size: 12, color: Palette.error),
       errorBorder: inputDecorationBorderStyle(color: Palette.error),
       focusedErrorBorder: inputDecorationBorderStyle(color: Palette.error),
@@ -86,18 +86,18 @@ class DefaultTheme {
     );
   }
 
-  static inputDecorationBorderStyle({@required color}) {
+  static OutlineInputBorder inputDecorationBorderStyle({required Color color}) {
     return OutlineInputBorder(
-      borderSide: BorderSide(width: 1, color: color),
+      borderSide: BorderSide(color: color),
       borderRadius: const BorderRadius.all(Radius.circular(8)),
     );
   }
 
-  static inputDecorationTextTheme({color, double size = 14, bool bold = false}) {
+  static TextStyle inputDecorationTextTheme({required Color color, double size = 14, bool bold = false}) {
     return TextStyle(color: color, fontSize: size, fontWeight: bold ? FontWeight.bold : FontWeight.w400);
   }
 
-  static TextTheme textTheme() => GoogleFonts.urbanistTextTheme(
+  static TextTheme textTheme() => GoogleFonts.interTextTheme(
     const TextTheme(
       titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Palette.primaryTextColor),
       titleMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Palette.primaryTextColor),
@@ -171,15 +171,15 @@ class DefaultTheme {
     );
   }
 
-  static floatingActionButtonTheme() {
+  static FloatingActionButtonThemeData floatingActionButtonTheme() {
     return const FloatingActionButtonThemeData(backgroundColor: Palette.secondary, iconSize: 32);
   }
 
-  static iconTheme() {
+  static IconThemeData iconTheme() {
     return const IconThemeData(color: Palette.onPrimaryColor);
   }
 
-  static progressIndicatorTheme() {
+  static ProgressIndicatorThemeData progressIndicatorTheme() {
     return const ProgressIndicatorThemeData(color: Palette.primary);
   }
 }
@@ -202,7 +202,7 @@ class DarkTheme {
     ),
     scaffoldBackgroundColor: Palette.darkBackgroundColor,
     iconTheme: DarkTheme.iconTheme(),
-    dialogTheme: DialogThemeData(backgroundColor: Palette.darkBackgroundColor),
+    dialogTheme: const DialogThemeData(backgroundColor: Palette.darkBackgroundColor),
     floatingActionButtonTheme: DarkTheme.floatingActionButtonTheme(),
     textTheme: DarkTheme.textTheme(),
     outlinedButtonTheme: DarkTheme.outlinedButtonTheme(),
@@ -214,7 +214,7 @@ class DarkTheme {
         color: Palette.primaryTextColor,
         fontSize: 16,
         fontWeight: FontWeight.bold,
-        fontFamily: GoogleFonts.urbanist().fontFamily,
+        fontFamily: GoogleFonts.inter().fontFamily,
       ),
     ),
     textButtonTheme: DarkTheme.textButtonTheme(),
@@ -225,7 +225,7 @@ class DarkTheme {
     cardColor: Palette.secondary,
     cardTheme: CardThemeData(color: Palette.darkBackgroundColor.withValues(alpha: 0.9), elevation: 2),
     dividerColor: Palette.dividerColor,
-    tabBarTheme: TabBarThemeData(
+    tabBarTheme: const TabBarThemeData(
       labelColor: Palette.darkPrimaryTextColor,
       unselectedLabelColor: Palette.darkPrimaryTextColor,
       indicatorColor: Palette.darkSecondary,
@@ -234,12 +234,12 @@ class DarkTheme {
     canvasColor: Colors.white,
   );
 
-  static appBarDecoration() {
+  static AppBarTheme appBarDecoration() {
     return AppBarTheme(
       backgroundColor: Palette.secondary,
-      iconTheme: IconThemeData(color: Palette.onSecondaryColor),
+      iconTheme: const IconThemeData(color: Palette.onSecondaryColor),
       titleTextStyle: TextStyle(
-        fontFamily: GoogleFonts.urbanist().fontFamily,
+        fontFamily: GoogleFonts.inter().fontFamily,
         color: Palette.onSecondaryColor,
         fontSize: 20,
         fontWeight: FontWeight.bold,
@@ -249,39 +249,39 @@ class DarkTheme {
     );
   }
 
-  static inputDecoration() {
+  static InputDecorationTheme inputDecoration() {
     return InputDecorationTheme(
       fillColor: Palette.inputBackground,
       focusColor: Palette.secondary,
       hoverColor: Palette.secondary,
       filled: false,
-      labelStyle: inputDecorationTextTheme(color: Palette.primaryTextColor, bold: false, size: 14),
+      labelStyle: inputDecorationTextTheme(color: Palette.darkPrimaryTextColor),
       errorMaxLines: 2,
-      suffixIconColor: Palette.primaryTextColor,
-      prefixIconColor: Palette.primaryTextColor,
-      hintStyle: inputDecorationTextTheme(size: 14, color: Palette.primaryTextColor),
+      suffixIconColor: Palette.darkPrimaryTextColor,
+      prefixIconColor: Palette.darkPrimaryTextColor,
+      hintStyle: inputDecorationTextTheme(color: Palette.primaryTextColor),
       errorStyle: inputDecorationTextTheme(size: 12, color: Palette.error),
       errorBorder: inputDecorationBorderStyle(color: Palette.error),
       focusedErrorBorder: inputDecorationBorderStyle(color: Palette.error),
       contentPadding: const EdgeInsets.all(8),
       border: inputDecorationBorderStyle(color: Palette.primaryTextColor),
       enabledBorder: inputDecorationBorderStyle(color: Palette.primaryTextColor),
-      focusedBorder: inputDecorationBorderStyle(color: Palette.primary),
+      focusedBorder: inputDecorationBorderStyle(color: Palette.secondary),
     );
   }
 
-  static inputDecorationBorderStyle({@required color}) {
+  static OutlineInputBorder inputDecorationBorderStyle({required Color color}) {
     return OutlineInputBorder(
-      borderSide: BorderSide(width: 1, color: color),
+      borderSide: BorderSide(color: color),
       borderRadius: const BorderRadius.all(Radius.circular(8)),
     );
   }
 
-  static inputDecorationTextTheme({color, double size = 14, bool bold = false}) {
+  static TextStyle inputDecorationTextTheme({required Color color, double size = 14, bool bold = false}) {
     return TextStyle(color: color, fontSize: size, fontWeight: bold ? FontWeight.bold : FontWeight.w400);
   }
 
-  static TextTheme textTheme() => GoogleFonts.urbanistTextTheme(
+  static TextTheme textTheme() => GoogleFonts.interTextTheme(
     const TextTheme(
       titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Palette.darkPrimaryTextColor),
       titleMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Palette.darkPrimaryTextColor),
@@ -313,10 +313,11 @@ class DarkTheme {
   static ElevatedButtonThemeData elevatedButtonTheme() {
     return ElevatedButtonThemeData(
       style: OutlinedButton.styleFrom(
-        backgroundColor: Palette.primary,
-        foregroundColor: Palette.primary,
+        backgroundColor: Palette.secondary,
+        foregroundColor: Palette.secondary,
         textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Palette.onPrimaryColor),
         minimumSize: const Size(80, 48),
+        iconColor: Palette.onPrimaryColor,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
       ),
@@ -355,15 +356,15 @@ class DarkTheme {
     );
   }
 
-  static floatingActionButtonTheme() {
+  static FloatingActionButtonThemeData floatingActionButtonTheme() {
     return const FloatingActionButtonThemeData(backgroundColor: Palette.darkPrimary, iconSize: 32);
   }
 
-  static iconTheme() {
+  static IconThemeData iconTheme() {
     return const IconThemeData(color: Palette.darkPrimaryTextColor);
   }
 
-  static progressIndicatorTheme() {
+  static ProgressIndicatorThemeData progressIndicatorTheme() {
     return const ProgressIndicatorThemeData(color: Palette.darkPrimary);
   }
 }

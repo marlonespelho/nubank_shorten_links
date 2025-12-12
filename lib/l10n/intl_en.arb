@@ -5,5 +5,13 @@
   "notFoundExceptionMessage": "Not found.",
   "noConnectionExceptionMessage": "No connection.",
   "timeOutExceptionMessage": "Request timeout.",
-  "defaultExceptionMessage": "Service unavailable at the moment, please try again later."
+  "defaultExceptionMessage": "Service unavailable at the moment, please try again later.",
+  "linkShortener": "Link Shortener",
+  "errorCopyingLink": "Error copying link",
+  "linkCopiedToClipboard": "Link copied to clipboard",
+  "enterLinkToShorten": "Enter the link you want to shorten",
+  "link": "Link",
+  "linkIsInvalid": "Link is invalid, please enter a valid link",
+  "noShortenLinksFound": "No shorten links found",
+  "shortenedLinksHistory": "Shortened links history"
 }

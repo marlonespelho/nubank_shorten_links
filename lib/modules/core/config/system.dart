@@ -1,21 +1,20 @@
 import 'dart:async';
 
-import 'package:nubank_shorten_links/modules/core/config/environment.dart';
+import 'environment.dart';
 
 class System {
-  static final System _instance = System._internal();
-
   factory System() => _instance;
-
-  bool isReady = false;
 
   System._internal() {
     _preInit();
   }
+  static final System _instance = System._internal();
 
-  void _preInit() async {}
+  bool isReady = false;
 
-  Future init() async {
+  Future<void> _preInit() async {}
+
+  Future<void> init() async {
     if (isReady) {
       return;
     }

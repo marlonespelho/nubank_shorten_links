@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
-import 'package:nubank_shorten_links/modules/core/http/http_service.dart';
-import 'package:nubank_shorten_links/modules/design/widgets/main.dart';
+import '../../core/http/http_service.dart';
+import 'main.dart';
 
-handleException(Object e, [Function? onError, stack]) async {
+Future<void> handleException(Object e, [void Function(Object)? onError, StackTrace? stack]) async {
   if (onError != null) {
     onError(e);
     return;
   }
 
   if (e is DioException && e.error is HttpError) {
-    HttpError error = e.error as HttpError;
+    final HttpError error = e.error as HttpError;
     showSnackBarMessage(message: error.message, type: SnackBarTypeEnum.error);
     return;
   }

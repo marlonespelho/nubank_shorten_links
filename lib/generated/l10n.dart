@@ -101,6 +101,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Link Shortener`
+  String get linkShortener {
+    return Intl.message('Link Shortener', name: 'linkShortener', desc: '', args: []);
+  }
+
+  /// `Error copying link`
+  String get errorCopyingLink {
+    return Intl.message('Error copying link', name: 'errorCopyingLink', desc: '', args: []);
+  }
+
+  /// `Link copied to clipboard`
+  String get linkCopiedToClipboard {
+    return Intl.message('Link copied to clipboard', name: 'linkCopiedToClipboard', desc: '', args: []);
+  }
+
+  /// `Enter the link you want to shorten`
+  String get enterLinkToShorten {
+    return Intl.message('Enter the link you want to shorten', name: 'enterLinkToShorten', desc: '', args: []);
+  }
+
+  /// `Link`
+  String get link {
+    return Intl.message('Link', name: 'link', desc: '', args: []);
+  }
+
+  /// `Link is invalid, please enter a valid link`
+  String get linkIsInvalid {
+    return Intl.message('Link is invalid, please enter a valid link', name: 'linkIsInvalid', desc: '', args: []);
+  }
+
+  /// `No shorten links found`
+  String get noShortenLinksFound {
+    return Intl.message('No shorten links found', name: 'noShortenLinksFound', desc: '', args: []);
+  }
+
+  /// `Shortened links history`
+  String get shortenedLinksHistory {
+    return Intl.message('Shortened links history', name: 'shortenedLinksHistory', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

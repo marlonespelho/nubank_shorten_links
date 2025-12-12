@@ -28,8 +28,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "defaultExceptionMessage": MessageLookupByLibrary.simpleMessage(
       "Serviço indisponível no momento, tente novamente mais tarde.",
     ),
+    "enterLinkToShorten": MessageLookupByLibrary.simpleMessage("Digite o link que deseja encurtar"),
+    "errorCopyingLink": MessageLookupByLibrary.simpleMessage("Erro ao copiar link"),
+    "link": MessageLookupByLibrary.simpleMessage("Link"),
+    "linkCopiedToClipboard": MessageLookupByLibrary.simpleMessage("Link copiado para a área de transferência"),
+    "linkIsInvalid": MessageLookupByLibrary.simpleMessage("Link inválido, por favor insira um link válido"),
+    "linkShortener": MessageLookupByLibrary.simpleMessage("Encurtador de Links"),
     "noConnectionExceptionMessage": MessageLookupByLibrary.simpleMessage("Sem conexão."),
+    "noShortenLinksFound": MessageLookupByLibrary.simpleMessage("Nenhum link encurtado encontrado"),
     "notFoundExceptionMessage": MessageLookupByLibrary.simpleMessage("Não encontrado."),
+    "shortenedLinksHistory": MessageLookupByLibrary.simpleMessage("Histórico de links encurtados"),
     "timeOutExceptionMessage": MessageLookupByLibrary.simpleMessage("Tempo de requisição expirado."),
     "unauthorizedAlertMessage": MessageLookupByLibrary.simpleMessage(
       "Sua sessão expirou, faça login novamente para continuar utilizando o aplicativo.",

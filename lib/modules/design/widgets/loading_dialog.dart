@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class LoadingDialog extends StatelessWidget {
   const LoadingDialog({super.key});
 
-  static showLoading(BuildContext context) {
-    showDialog(context: context, barrierDismissible: false, builder: (context) => const LoadingDialog());
+  static void showLoading(BuildContext context) {
+    showDialog<void>(context: context, barrierDismissible: false, builder: (context) => const LoadingDialog());
   }
 
-  static hideLoading(BuildContext context) {
+  static void hideLoading(BuildContext context) {
     Navigator.of(context).pop();
   }
 

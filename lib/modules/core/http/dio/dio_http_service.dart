@@ -2,13 +2,11 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:flutter/foundation.dart';
-import 'package:nubank_shorten_links/modules/core/http/dio/dio_interceptors.dart';
-import 'package:nubank_shorten_links/modules/core/http/http_service.dart';
-import 'package:nubank_shorten_links/modules/design/widgets/error_widget.dart';
+import 'dio_interceptors.dart';
+import '../http_service.dart';
+import '../../../design/widgets/error_widget.dart';
 
 class DioHttpService implements HttpService {
-  late Dio _client;
-
   DioHttpService({required this.baseUrl, this.timeout = 10, InterceptorsWrapper? interceptor}) {
     _client = Dio();
     _client.interceptors.add(interceptor ?? DioInterceptor());
@@ -21,11 +19,12 @@ class DioHttpService implements HttpService {
     }
 
     (_client.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
-      HttpClient client = HttpClient();
-      client.badCertificateCallback = ((X509Certificate cert, String host, int port) => true);
+      final HttpClient client = HttpClient();
+      client.badCertificateCallback = (X509Certificate cert, String host, int port) => true;
       return client;
     };
   }
+  late Dio _client;
 
   @override
   String baseUrl;
@@ -34,42 +33,63 @@ class DioHttpService implements HttpService {
   int timeout;
 
   @override
-  Future delete({required String path, data, queryParams, Function? onError}) async {
+  Future<dynamic> delete<T>({
+    required String path,
+    dynamic data,
+    Map<String, dynamic>? queryParams,
+    void Function(Object)? onError,
+  }) async {
     try {
-      var response = await _client.delete(path, data: data, queryParameters: queryParams);
+      final response = await _client.delete<T>(path, data: data, queryParameters: queryParams);
       return response.data;
     } catch (e, stack) {
-      handleException(e, onError, stack);
+      await handleException(e, onError, stack);
       rethrow;
     }
   }
 
   @override
-  Future get({required String path, data, queryParams, Function? onError}) async {
+  Future<dynamic> get<T>({
+    required String path,
+    dynamic data,
+    Map<String, dynamic>? queryParams,
+    void Function(Object)? onError,
+  }) async {
     try {
-      var response = await _client.get(path, data: data, queryParameters: queryParams);
+      final response = await _client.get<T>(path, data: data, queryParameters: queryParams);
       return response.data;
     } catch (e, stack) {
-      handleException(e, onError, stack);
+      await handleException(e, onError, stack);
       rethrow;
     }
   }
 
   @override
-  Future post({required String path, data, queryParams, Function? onError}) async {
+  Future<dynamic> post<T>({
+    required String path,
+    dynamic data,
+    Map<String, dynamic>? queryParams,
+    void Function(Object)? onError,
+  }) async {
     try {
-      var response = await _client.post(path, data: data, queryParameters: queryParams);
+      final response = await _client.post<T>(path, data: data, queryParameters: queryParams);
       return response.data;
     } catch (e, stack) {
-      handleException(e, onError, stack);
+      await handleException(e, onError, stack);
       rethrow;
     }
   }
 
   @override
-  Future put({required String path, data, queryParams, Function? onError, Map<String, dynamic>? headers}) async {
+  Future<dynamic> put<T>({
+    required String path,
+    dynamic data,
+    Map<String, dynamic>? queryParams,
+    void Function(Object)? onError,
+    Map<String, dynamic>? headers,
+  }) async {
     try {
-      var response = await _client.put(
+      final response = await _client.put<T>(
         path,
         data: data,
         queryParameters: queryParams,
@@ -77,24 +97,29 @@ class DioHttpService implements HttpService {
       );
       return response.data;
     } catch (e, stack) {
-      handleException(e, onError, stack);
+      await handleException(e, onError, stack);
       rethrow;
     }
   }
 
   @override
-  Future patch({required String path, data, queryParams, Function? onError}) async {
+  Future<dynamic> patch<T>({
+    required String path,
+    dynamic data,
+    Map<String, dynamic>? queryParams,
+    void Function(Object)? onError,
+  }) async {
     try {
-      var response = await _client.patch(path, data: data, queryParameters: queryParams);
+      final response = await _client.patch<T>(path, data: data, queryParameters: queryParams);
       return response.data;
     } catch (e, stack) {
-      handleException(e, onError, stack);
+      await handleException(e, onError, stack);
       rethrow;
     }
   }
 
   @override
-  updateHeaders({headers}) {
+  void updateHeaders({Map<String, dynamic>? headers}) {
     _client.options.headers = headers;
   }
 }

@@ -28,8 +28,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "defaultExceptionMessage": MessageLookupByLibrary.simpleMessage(
       "Service unavailable at the moment, please try again later.",
     ),
+    "enterLinkToShorten": MessageLookupByLibrary.simpleMessage("Enter the link you want to shorten"),
+    "errorCopyingLink": MessageLookupByLibrary.simpleMessage("Error copying link"),
+    "link": MessageLookupByLibrary.simpleMessage("Link"),
+    "linkCopiedToClipboard": MessageLookupByLibrary.simpleMessage("Link copied to clipboard"),
+    "linkIsInvalid": MessageLookupByLibrary.simpleMessage("Link is invalid, please enter a valid link"),
+    "linkShortener": MessageLookupByLibrary.simpleMessage("Link Shortener"),
     "noConnectionExceptionMessage": MessageLookupByLibrary.simpleMessage("No connection."),
+    "noShortenLinksFound": MessageLookupByLibrary.simpleMessage("No shorten links found"),
     "notFoundExceptionMessage": MessageLookupByLibrary.simpleMessage("Not found."),
+    "shortenedLinksHistory": MessageLookupByLibrary.simpleMessage("Shortened links history"),
     "timeOutExceptionMessage": MessageLookupByLibrary.simpleMessage("Request timeout."),
     "unauthorizedAlertMessage": MessageLookupByLibrary.simpleMessage(
       "Your session has expired, please log in again to continue using the application.",

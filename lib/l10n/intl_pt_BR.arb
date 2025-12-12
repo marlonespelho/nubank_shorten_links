@@ -5,5 +5,13 @@
   "notFoundExceptionMessage": "Não encontrado.",
   "noConnectionExceptionMessage": "Sem conexão.",
   "timeOutExceptionMessage": "Tempo de requisição expirado.",
-  "defaultExceptionMessage": "Serviço indisponível no momento, tente novamente mais tarde."
+  "defaultExceptionMessage": "Serviço indisponível no momento, tente novamente mais tarde.",
+  "linkShortener": "Encurtador de Links",
+  "errorCopyingLink": "Erro ao copiar link",
+  "linkCopiedToClipboard": "Link copiado para a área de transferência",
+  "enterLinkToShorten": "Digite o link que deseja encurtar",
+  "link": "Link",
+  "linkIsInvalid": "Link inválido, por favor insira um link válido",
+  "noShortenLinksFound": "Nenhum link encurtado encontrado",
+  "shortenedLinksHistory": "Histórico de links encurtados"
 }

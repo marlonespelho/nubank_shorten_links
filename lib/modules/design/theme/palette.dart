@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:nubank_shorten_links/modules/design/theme/color_helpers.dart';
+import 'color_helpers.dart';
 
 class Palette {
-  static const Color primary = Color(0xFF3B4CCA);
-  static const Color secondary = Color(0xFFFFDE00);
+  static const Color primary = Color(0xFF820AD1);
+  static const Color secondary = Color(0xFFBC8AE1);
 
   static const Color primaryTextColor = Color(0xFF131313);
   static const Color secondaryTextColor = Color(0xFF2C2925);
@@ -20,11 +20,11 @@ class Palette {
   static const Color dividerColor = Color(0xFFE5E5E5);
 
   // dark colors
-  static const Color darkPrimary = Color(0xFF3B4CCA);
-  static const Color darkSecondary = Color(0xFFFDC61E);
+  static const Color darkPrimary = Color(0xFFBC8AE1);
+  static const Color darkSecondary = Color(0xFF9C44DC);
 
   static const Color darkPrimaryTextColor = Color(0xFFFFFFFF);
-  static const Color darkSecondaryTextColor = Color(0xFFFDC61E);
+  static const Color darkSecondaryTextColor = Color(0xFF820AD1);
 
   static const Color darkOnPrimaryColor = Color(0xFF2C2925);
   static const Color darkOnSecondaryColor = Color(0xFF2C2925);

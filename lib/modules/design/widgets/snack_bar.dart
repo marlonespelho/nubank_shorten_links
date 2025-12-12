@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:nubank_shorten_links/modules/design/theme/palette.dart';
+import '../theme/palette.dart';
 
 import '../../core/services/navigation.dart';
 
-showSnackBarMessage({required String message, required SnackBarTypeEnum type}) {
-  var context = NavigationService().getCurrentContext();
+void showSnackBarMessage({required String message, required SnackBarTypeEnum type}) {
+  final context = NavigationService().getCurrentContext();
 
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
-      key: const Key("snackBarMessage"),
+      key: const Key('snackBarMessage'),
       duration: const Duration(seconds: 3),
       backgroundColor: {
         SnackBarTypeEnum.alert: Palette.backgroundSnackAlert,
@@ -19,7 +19,6 @@ showSnackBarMessage({required String message, required SnackBarTypeEnum type}) {
       margin: const EdgeInsets.only(bottom: 32, left: 16, right: 16),
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8))),
       content: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
             child: Text(

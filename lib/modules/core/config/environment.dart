@@ -1,4 +1,4 @@
-import 'package:nubank_shorten_links/modules/core/config/config.dart';
+import 'config.dart';
 
 class Environment {
   factory Environment() {
@@ -14,9 +14,9 @@ class Environment {
 
   BaseConfig config = DevelopmentConfig();
 
-  bool get isProduction => String.fromEnvironment('ENVIRONMENT', defaultValue: 'DEVELOPMENT') == production;
+  bool get isProduction => const String.fromEnvironment('ENVIRONMENT', defaultValue: 'DEVELOPMENT') == production;
 
-  initConfig() {
+  void initConfig() {
     config = _getConfig(isProduction);
   }
 
