@@ -1,0 +1,9 @@
+{
+  "badRequestExceptionMessage": "Bad request, please check the data and try again.",
+  "unauthorizedExceptionMessage": "Unauthorized",
+  "unauthorizedAlertMessage": "Your session has expired, please log in again to continue using the application.",
+  "notFoundExceptionMessage": "Not found.",
+  "noConnectionExceptionMessage": "No connection.",
+  "timeOutExceptionMessage": "Request timeout.",
+  "defaultExceptionMessage": "Service unavailable at the moment, please try again later."
+}
