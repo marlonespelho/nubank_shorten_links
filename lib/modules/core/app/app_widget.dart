@@ -15,7 +15,6 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeStore themeStore = Modular.get<ThemeStore>();
     Modular.setInitialRoute(LinkShortenerModule.shortenLinksViewRoute);
     Modular.setNavigatorKey(NavigationService().navigatorKey);
     return Observer(
@@ -45,7 +44,7 @@ class AppWidget extends StatelessWidget {
           ],
           theme: DefaultTheme.getTheme(context),
           darkTheme: DarkTheme.getTheme(context),
-          themeMode: themeStore.themeMode,
+          themeMode: Modular.get<ThemeStore>().themeMode,
           title: 'Nubank Shorten Links',
         );
       },

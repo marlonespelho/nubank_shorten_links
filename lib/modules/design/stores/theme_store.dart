@@ -12,6 +12,8 @@ abstract class ThemeStoreBase with Store {
   ThemeMode themeMode = ThemeMode.light;
 
   void changeThemeMode() {
-    themeMode = themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+    runInAction(() {
+      themeMode = themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+    });
   }
 }
