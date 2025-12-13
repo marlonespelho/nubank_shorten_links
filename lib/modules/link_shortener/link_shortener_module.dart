@@ -14,7 +14,7 @@ class LinkShortenerModule extends Module {
     Bind((i) => GetShortenLinkUseCaseImplement(shortenLinkRepository: i.get<DefaultLinkRepositoryImplement>())),
     Bind((i) => ShortenLinkStore(getShortenLinkUseCase: i.get<GetShortenLinkUseCaseImplement>())),
   ];
- 
+
   @override
   List<ModularRoute> get routes => [
     ChildRoute<ShortenLinksView>('/', child: (context, args) => const ShortenLinksView()),

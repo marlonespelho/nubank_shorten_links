@@ -4,11 +4,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../models/main.dart';
 
 class ShortenedLinksList extends StatelessWidget {
-  const ShortenedLinksList({
-    required this.shortenLinks,
-    required this.onCopyLink,
-    super.key,
-  });
+  const ShortenedLinksList({required this.shortenLinks, required this.onCopyLink, super.key});
   final List<ShortenLink> shortenLinks;
   final ValueChanged<String> onCopyLink;
 
@@ -22,10 +18,7 @@ class ShortenedLinksList extends StatelessWidget {
         return ListView(
           padding: const EdgeInsets.all(16),
           children: [
-            Text(
-              S.of(context).shortenedLinksHistory,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+            Text(S.of(context).shortenedLinksHistory, style: Theme.of(context).textTheme.titleLarge),
             ...shortenLinks.map((link) => buildItemShortenLink(link, context)),
           ],
         );
@@ -38,14 +31,8 @@ class ShortenedLinksList extends StatelessWidget {
       elevation: 1,
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
-        title: Text(
-          link.shortUrl,
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
-        subtitle: Text(
-          link.originalUrl,
-          style: Theme.of(context).textTheme.bodySmall,
-        ),
+        title: Text(link.shortUrl, style: Theme.of(context).textTheme.bodyMedium),
+        subtitle: Text(link.originalUrl, style: Theme.of(context).textTheme.bodySmall),
         trailing: IconButton(
           onPressed: () {
             onCopyLink(link.shortUrl);
